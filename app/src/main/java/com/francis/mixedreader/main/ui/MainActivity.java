@@ -1,4 +1,4 @@
-package com.francis.mixedreader.main.view;
+package com.francis.mixedreader.main.ui;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import com.francis.mixedreader.R;
 import com.francis.mixedreader.main.presenter.MainPresenter;
 import com.francis.mixedreader.main.presenter.MainPresenterImpl;
+import com.francis.mixedreader.main.view.MainView;
+import com.francis.mixedreader.news.ui.NewsFragment;
 
-public class MainActivity extends AppCompatActivity implements MainView{
+public class MainActivity extends AppCompatActivity implements MainView {
 
 	private DrawerLayout drawerLayout;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -58,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements MainView{
 
 	@Override
 	public void switch2News() {
-
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new NewsFragment()).commit();
+		toolbar.setTitle(R.string.navigation_news);
 	}
 
 	@Override

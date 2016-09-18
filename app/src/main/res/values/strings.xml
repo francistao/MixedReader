@@ -3,4 +3,13 @@
 
 	<string name="drawer_open">Open</string>
 	<string name="drawer_close">Close</string>
+
+	<!-- NavigationView -->
+
+	<string name="navigation_news">新闻</string>
+	<string name="navigation_images">图片</string>
+	<string name="navigation_weather">天气</string>
+	<string name="navigation_about">关于</string>
+
+
 </resources>
