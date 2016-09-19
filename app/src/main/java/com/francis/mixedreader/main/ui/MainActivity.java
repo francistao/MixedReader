@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.francis.mixedreader.R;
+import com.francis.mixedreader.about.AboutFragment;
+import com.francis.mixedreader.image.ui.ImageFragment;
 import com.francis.mixedreader.main.presenter.MainPresenter;
 import com.francis.mixedreader.main.presenter.MainPresenterImpl;
 import com.francis.mixedreader.main.view.MainView;
 import com.francis.mixedreader.news.ui.NewsFragment;
+import com.francis.mixedreader.weather.ui.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
@@ -66,16 +69,19 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
 	@Override
 	public void switch2Images() {
-
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new ImageFragment()).commit();
+		toolbar.setTitle(R.string.navigation_images);
 	}
 
 	@Override
 	public void switch2Weather() {
-
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new WeatherFragment()).commit();
+		toolbar.setTitle(R.string.navigation_weather);
 	}
 
 	@Override
 	public void switch2About() {
-
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new AboutFragment()).commit();
+		toolbar.setTitle(R.string.navigation_about);
 	}
 }
