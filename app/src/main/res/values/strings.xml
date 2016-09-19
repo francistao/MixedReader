@@ -12,4 +12,9 @@
 	<string name="navigation_about">关于</string>
 
 
+	<string name="top">头条</string>
+	<string name="nba">NBA</string>
+	<string name="cars">汽车</string>
+	<string name="jokes">笑话</string>
+
 </resources>
