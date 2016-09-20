@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import com.francis.mixedreader.model.NewsBean;
+import com.francis.mixedreader.news.ui.adapter.NewsAdapter;
+import java.util.List;
 
 /**
  * @author taoc @ Zhihu Inc.
@@ -17,6 +20,9 @@ public class NewsListFragment extends Fragment{
 	private SwipeRefreshLayout swipeRefreshLayout;
 	private RecyclerView recyclerView;
 	private LinearLayoutManager layoutManager;
+	private NewsAdapter adapter;
+	private List<NewsBean> data;
+
 
 
 	public static NewsListFragment newInstance(int type){

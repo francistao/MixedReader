@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.francis.mixedreader.R;
 import com.francis.mixedreader.model.NewsBean;
+import com.francis.mixedreader.utils.ImageLoaderUtils;
 import java.util.List;
 
 /**
@@ -75,14 +76,30 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 			((ItemViewHolder) holder).title.setText(newsBean.getTitle());
 			((ItemViewHolder) holder).desc.setText(newsBean.getDigest());
 
+			ImageLoaderUtils.display(mContext, ((ItemViewHolder) holder).newsImg, newsBean.getImgsrc());
 		}
 	}
 
 	@Override
 	public int getItemCount() {
-		return 0;
+		int begin = mShowFooter ? 1 : 0;
+		if(mData == null){
+			return begin;
+		}
+		return mData.size() + begin;
 	}
 
+	public NewsBean getItem(int position){
+		return mData == null ? null : mData.get(position);
+	}
+
+	public void isShowFooter(boolean showFooter){
+		this.mShowFooter = showFooter;
+	}
+
+	public boolean isShowFooter(){
+		return this.mShowFooter;
+	}
 
 	public interface OnItemClickListener{
 		void OnItemClick(View view, int position);
@@ -95,7 +112,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 		}
 	}
 
-	public class ItemViewHolder extends RecyclerView.ViewHolder{
+	public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 		public TextView title;
 		public TextView desc;
@@ -103,6 +120,17 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 		public ItemViewHolder(View itemView) {
 			super(itemView);
+			title = (TextView) itemView.findViewById(R.id.tvTitle);
+			desc = (TextView) itemView.findViewById(R.id.tvDesc);
+			newsImg = (ImageView) itemView.findViewById(R.id.iv_news);
+			itemView.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View view) {
+			if(mOnItemClickListener != null){
+				mOnItemClickListener.OnItemClick(view, this.getPosition());
+			}
 		}
 	}
 }
