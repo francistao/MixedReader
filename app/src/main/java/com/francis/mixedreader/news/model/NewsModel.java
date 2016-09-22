@@ -6,7 +6,7 @@ package com.francis.mixedreader.news.model;
  */
 public interface NewsModel {
 
-	void loadNews(String url, int type, NewsModelImpl.OnLoadNewsDetailListener listener);
+	void loadNews(String url, int type, NewsModelImpl.OnLoadNewsListener listener);
 
 	void loadNewsDetail(String docid, NewsModelImpl.OnLoadNewsDetailListener listener);
 

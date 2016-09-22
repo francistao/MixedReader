@@ -23,41 +23,65 @@ public class NewsModelImpl implements NewsModel{
 	 * @param listener
 	 */
 	@Override
-	public void loadNews(String url, int type, OnLoadNewsDetailListener listener) {
+	public void loadNews(String url, final int type, final OnLoadNewsListener listener) {
 		OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
 
 			@Override
 			public void onSuccess(String response) {
-				//List<NewsBean> newsBeenList = NewsjsonUtils.readJsonNewsBeans(response, get)
+				List<NewsBean> newsBeenList = NewsjsonUtils.readJsonNewsBeans(response, getID(type));
+				listener.onSuccess(newsBeenList);
 			}
 
 			@Override
 			public void onFailure(Exception e) {
-
+				listener.onFailure("load news list failure.", e);
 			}
 		};
+		OkHttpUtils.get(url, loadNewsCallback);
 	}
 
+	/**
+	 * 加载新闻详情
+	 * @param docid
+	 * @param listener
+	 */
 	@Override
 	public void loadNewsDetail(String docid, OnLoadNewsDetailListener listener) {
-
+		//String url = ge
 	}
 
-	///**
-	// * 获取 ID
-	// * @param type
-	// * @return
-	// */
-	//private String getID(int type){
-	//	String id;
-	//	switch (type){
-	//		case NewsFragment.NEWS_TYPE_TOP:
-	//			id = Urls.TOP_ID;
-	//			break;
-	//	}
-	//}
+	/**
+	 * 获取 ID
+	 * @param type
+	 * @return
+	 */
+	private String getID(int type){
+		String id;
+		switch (type){
+			case NewsFragment.NEWS_TYPE_TOP:
+				id = Urls.TOP_ID;
+				break;
+			case NewsFragment.NEWS_TYPE_NBA:
+				id = Urls.NBA_ID;
+				break;
+			case NewsFragment.NEWS_TYPE_CARS:
+				id = Urls.CAR_ID;
+				break;
+			case NewsFragment.NEWS_TYPE_JOKES:
+				id = Urls.JOKE_ID;
+				break;
+			default:
+				id = Urls.TOP_ID;
+				break;
+		}
+		return id;
+	}
 
-
+	private String getDetailUrl(String docId){
+		StringBuffer sb = new StringBuffer(Urls.NEW_DETAIL);
+		sb.append(docId).append(Urls.END_DETAIL_URL);
+		return sb.toString();
+	}
 
 	public interface OnLoadNewsListener{
 		void onSuccess(List<NewsBean> list);

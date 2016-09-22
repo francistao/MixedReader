@@ -15,7 +15,7 @@ public class NewsPresenterImpl implements NewsPresenter{
 	private NewsView mNewsView;
 	private NewsModel mNewsModel;
 
-	public NewsPresenterImpl(NewsView newsView, NewsModel newsModel) {
+	public NewsPresenterImpl(NewsView newsView) {
 		mNewsView = newsView;
 		mNewsModel = new NewsModelImpl();
 	}
