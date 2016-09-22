@@ -66,11 +66,9 @@ public class OkHttpUtils {
 	}
 
 	private void postRequest(String url, ResultCallback callback, List<Param>params){
-		//Request request =
+		Request request = buildPostRequest(url, params);
+		deliveryResult(callback, request);
 	}
-
-
-
 
 	private void deliveryResult(final ResultCallback callback, Request request){
 		mOkHttpClient.newCall(request).enqueue(new Callback() {
@@ -82,12 +80,18 @@ public class OkHttpUtils {
 
 			@Override
 			public void onResponse(Response response) throws IOException {
-				String str = response.body().string();
-				if(callback.mType == String.class){
-					sendSuccessCallBack(callback, str);
-				}else {
-					//Object object =
+				try {
+					String str = response.body().string();
+					if(callback.mType == String.class){
+						sendSuccessCallBack(callback, str);
+					}else {
+						Object object = JsonUtils.deserialize(str, callback.mType);
+						sendSuccessCallBack(callback, object);
+					}
+				}catch (final Exception e){
+					sendFailCallback(callback, e);
 				}
+
 			}
 		});
 	}
