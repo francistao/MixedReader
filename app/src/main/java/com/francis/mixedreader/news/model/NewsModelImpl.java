@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class NewsModelImpl implements NewsModel{
 
+
+
 	public interface OnLoadNewsListener{
 		void onSuccess(List<NewsBean> list);
 		void onFailure(String msg, Exception e);
@@ -19,4 +21,7 @@ public class NewsModelImpl implements NewsModel{
 		void onSuccess(NewsDetailBean newsDetailBean);
 		void onFailure(String msg, Exception e);
 	}
+
+
+
 }
