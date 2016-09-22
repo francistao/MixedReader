@@ -1,7 +1,10 @@
 package com.francis.mixedreader.news.model;
 
+import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.NewsBean;
 import com.francis.mixedreader.model.NewsDetailBean;
+import com.francis.mixedreader.news.ui.NewsFragment;
+import com.francis.mixedreader.utils.NewsjsonUtils;
 import com.francis.mixedreader.utils.OkHttpUtils;
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class NewsModelImpl implements NewsModel{
 
 			@Override
 			public void onSuccess(String response) {
-
+				//List<NewsBean> newsBeenList = NewsjsonUtils.readJsonNewsBeans(response, get)
 			}
 
 			@Override
@@ -39,6 +42,22 @@ public class NewsModelImpl implements NewsModel{
 	public void loadNewsDetail(String docid, OnLoadNewsDetailListener listener) {
 
 	}
+
+	///**
+	// * 获取 ID
+	// * @param type
+	// * @return
+	// */
+	//private String getID(int type){
+	//	String id;
+	//	switch (type){
+	//		case NewsFragment.NEWS_TYPE_TOP:
+	//			id = Urls.TOP_ID;
+	//			break;
+	//	}
+	//}
+
+
 
 	public interface OnLoadNewsListener{
 		void onSuccess(List<NewsBean> list);
