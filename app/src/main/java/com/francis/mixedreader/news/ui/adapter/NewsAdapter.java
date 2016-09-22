@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.francis.mixedreader.R;
@@ -99,6 +100,10 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 	public boolean isShowFooter(){
 		return this.mShowFooter;
+	}
+
+	public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+		this.mOnItemClickListener = onItemClickListener;
 	}
 
 	public interface OnItemClickListener{
