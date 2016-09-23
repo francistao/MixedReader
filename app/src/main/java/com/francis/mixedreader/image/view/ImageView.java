@@ -1,6 +1,7 @@
 package com.francis.mixedreader.image.view;
 
 import android.widget.ImageButton;
+import com.francis.mixedreader.model.ImageBean;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface ImageView {
 
-	void addImages(List<ImageButton> list);
+	void addImages(List<ImageBean> list);
 	void showProgress();
 	void hideProgress();
 	void showLoadFailMsg();
