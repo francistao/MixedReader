@@ -72,7 +72,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ItemViewHold
 
 		@Override
 		public void onClick(View view) {
-
+			mOnItemClickListener.onItemClick(view, this.getPosition());
 		}
 	}
 }
