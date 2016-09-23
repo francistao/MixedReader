@@ -2,6 +2,7 @@ package com.francis.mixedreader.image.model;
 
 import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.ImageBean;
+import com.francis.mixedreader.utils.ImageJsonUtils;
 import com.francis.mixedreader.utils.OkHttpUtils;
 import java.util.List;
 
@@ -16,20 +17,22 @@ public class ImageModelImpl implements ImageModel{
 	 * @param listener
 	 */
 	@Override
-	public void loadImageList(OnLoadImageListListener listener) {
+	public void loadImageList(final OnLoadImageListListener listener) {
 		String url = Urls.IMAGES_URL;
 		OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
 
 			@Override
 			public void onSuccess(String response) {
-				//List<ImageBean> imageBeanList = ImageJ
+				List<ImageBean> imageBeanList = ImageJsonUtils.readJsonImageBeans(response);
+				listener.onSuccess(imageBeanList);
 			}
 
 			@Override
 			public void onFailure(Exception e) {
-
+				listener.onFailure("load image list failure.", e);
 			}
 		};
+		OkHttpUtils.get(url, loadNewsCallback);
 	}
 
 	public interface OnLoadImageListListener{
