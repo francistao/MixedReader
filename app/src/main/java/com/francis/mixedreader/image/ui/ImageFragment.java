@@ -63,8 +63,9 @@ public class ImageFragment extends Fragment implements ImageView, SwipeRefreshLa
 		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 		adapter = new ImageAdapter(getActivity().getApplicationContext());
 		mRecyclerView.setAdapter(adapter);
-		//mRecyclerView.addOnScrollListener();
-		return super.onCreateView(inflater, container, savedInstanceState);
+		mRecyclerView.addOnScrollListener(mOnScrollListener);
+		onRefresh();
+		return view;
 	}
 
 	private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
