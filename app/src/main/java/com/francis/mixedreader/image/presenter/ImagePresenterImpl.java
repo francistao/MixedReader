@@ -2,7 +2,6 @@ package com.francis.mixedreader.image.presenter;
 
 import com.francis.mixedreader.image.model.ImageModel;
 import com.francis.mixedreader.image.model.ImageModelImpl;
-import com.francis.mixedreader.image.ui.ImageFragment;
 import com.francis.mixedreader.image.view.ImageView;
 import com.francis.mixedreader.model.ImageBean;
 import java.util.List;
@@ -20,8 +19,6 @@ public class ImagePresenterImpl implements ImagePresenter, ImageModelImpl.OnLoad
 		mImageModel = new ImageModelImpl();
 		mImageView = imageView;
 	}
-
-
 
 	@Override
 	public void loadImageList() {
