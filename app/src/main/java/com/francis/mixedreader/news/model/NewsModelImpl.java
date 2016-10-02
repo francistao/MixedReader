@@ -3,7 +3,7 @@ package com.francis.mixedreader.news.model;
 import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.NewsBean;
 import com.francis.mixedreader.model.NewsDetailBean;
-import com.francis.mixedreader.news.ui.NewsFragment;
+import com.francis.mixedreader.news.ui.fragment.NewsFragment;
 import com.francis.mixedreader.utils.NewsjsonUtils;
 import com.francis.mixedreader.utils.OkHttpUtils;
 import java.util.List;
@@ -46,8 +46,23 @@ public class NewsModelImpl implements NewsModel{
 	 * @param listener
 	 */
 	@Override
-	public void loadNewsDetail(String docid, OnLoadNewsDetailListener listener) {
-		//String url = ge
+	public void loadNewsDetail(final String docid, final OnLoadNewsDetailListener listener) {
+		String url = getDetailUrl(docid);
+		OkHttpUtils.ResultCallback<String> loadNewsDetailsCallback = new OkHttpUtils.ResultCallback<String>() {
+
+			@Override
+			public void onSuccess(String response) {
+				NewsDetailBean newsDetailBean = (NewsDetailBean) NewsjsonUtils.readJsonNewsBeans(response, docid);
+				listener.onSuccess(newsDetailBean);
+			}
+
+			@Override
+			public void onFailure(Exception e) {
+				listener.onFailure("load news detail info failure.", e);
+			}
+		};
+		OkHttpUtils.get(url, loadNewsDetailsCallback);
+
 	}
 
 	/**

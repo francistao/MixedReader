@@ -30,4 +30,5 @@ dependencies {
 	compile 'com.github.bumptech.glide:glide:3.7.0'
 	compile 'com.squareup.okhttp:okhttp:2.7.0'
 	compile 'com.google.code.gson:gson:2.2.4'
+	compile 'org.sufficientlysecure:html-textview:1.3'
 }

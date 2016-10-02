@@ -1,4 +1,4 @@
-package com.francis.mixedreader.news.ui;
+package com.francis.mixedreader.news.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

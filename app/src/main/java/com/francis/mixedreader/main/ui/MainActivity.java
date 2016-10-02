@@ -13,7 +13,7 @@ import com.francis.mixedreader.image.ui.ImageFragment;
 import com.francis.mixedreader.main.presenter.MainPresenter;
 import com.francis.mixedreader.main.presenter.MainPresenterImpl;
 import com.francis.mixedreader.main.view.MainView;
-import com.francis.mixedreader.news.ui.NewsFragment;
+import com.francis.mixedreader.news.ui.fragment.NewsFragment;
 import com.francis.mixedreader.weather.ui.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements MainView {

@@ -4,7 +4,7 @@ import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.NewsBean;
 import com.francis.mixedreader.news.model.NewsModel;
 import com.francis.mixedreader.news.model.NewsModelImpl;
-import com.francis.mixedreader.news.ui.NewsFragment;
+import com.francis.mixedreader.news.ui.fragment.NewsFragment;
 import com.francis.mixedreader.news.view.NewsView;
 import java.util.List;
 
