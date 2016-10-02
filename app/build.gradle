@@ -31,4 +31,5 @@ dependencies {
 	compile 'com.squareup.okhttp:okhttp:2.7.0'
 	compile 'com.google.code.gson:gson:2.2.4'
 	compile 'org.sufficientlysecure:html-textview:1.3'
+	compile 'me.imid.swipebacklayout.lib:library:1.0.0'
 }
