@@ -1,5 +1,6 @@
 package com.francis.mixedreader.image.presenter;
 
+import android.util.Log;
 import com.francis.mixedreader.image.model.ImageModel;
 import com.francis.mixedreader.image.model.ImageModelImpl;
 import com.francis.mixedreader.image.view.ImageView;

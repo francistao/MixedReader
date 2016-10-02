@@ -7,4 +7,5 @@ package com.francis.mixedreader.image.model;
 public interface ImageModel {
 
 	void loadImageList(ImageModelImpl.OnLoadImageListListener listener);
+
 }

@@ -1,5 +1,6 @@
 package com.francis.mixedreader.image.model;
 
+import android.util.Log;
 import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.ImageBean;
 import com.francis.mixedreader.utils.ImageJsonUtils;
@@ -25,11 +26,13 @@ public class ImageModelImpl implements ImageModel{
 			public void onSuccess(String response) {
 				List<ImageBean> imageBeanList = ImageJsonUtils.readJsonImageBeans(response);
 				listener.onSuccess(imageBeanList);
+				Log.d("---------->", imageBeanList.toString());
 			}
 
 			@Override
 			public void onFailure(Exception e) {
 				listener.onFailure("load image list failure.", e);
+				Log.d("---------->", "!!!!!!!!!!!!!");
 			}
 		};
 		OkHttpUtils.get(url, loadNewsCallback);

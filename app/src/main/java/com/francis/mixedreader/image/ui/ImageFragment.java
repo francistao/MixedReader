@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,7 @@ public class ImageFragment extends Fragment implements ImageView, SwipeRefreshLa
 		mRecyclerView.setAdapter(adapter);
 		mRecyclerView.addOnScrollListener(mOnScrollListener);
 		onRefresh();
+		mImagePresenter.loadImageList();
 		return view;
 	}
 
@@ -90,6 +92,7 @@ public class ImageFragment extends Fragment implements ImageView, SwipeRefreshLa
 
 	@Override
 	public void addImages(List<ImageBean> list) {
+		Log.d("======》》", list.toString());
 		if(data == null){
 			data = new ArrayList<>();
 		}

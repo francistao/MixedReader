@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.francis.mixedreader.R;
 import com.francis.mixedreader.model.ImageBean;
@@ -61,7 +63,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ItemViewHold
 		if(height > mMaxHeight){
 			height = mMaxHeight;
 		}
-		holder.image.setLayoutParams(new LinearLayoutCompat.LayoutParams(mMaxWidth, height));
+		holder.image.setLayoutParams(new LinearLayout.LayoutParams(mMaxWidth, height));
 		ImageLoaderUtils.display(mContext, holder.image, imageBean.getThumburl());
 	}
 

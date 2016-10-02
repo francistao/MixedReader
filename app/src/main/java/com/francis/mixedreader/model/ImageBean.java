@@ -55,4 +55,10 @@ public class ImageBean implements Serializable {
 	public void setWidth(int width) {
 		this.width = width;
 	}
+
+	@Override
+	public String toString() {
+		return "title = " + title + "thumburl = " + thumburl + "sourceurl" + sourceurl + "height" + height + "width" + width;
+
+	}
 }
