@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.francis.mixedreader.R;
+import com.francis.mixedreader.commons.Urls;
 import com.francis.mixedreader.model.NewsBean;
 import com.francis.mixedreader.news.presenter.NewsPresenter;
 import com.francis.mixedreader.news.presenter.NewsPresenterImpl;
 import com.francis.mixedreader.news.ui.adapter.NewsAdapter;
 import com.francis.mixedreader.news.view.NewsView;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,6 +52,7 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
 		super.onCreate(savedInstanceState);
 		mNewsPresenter = new NewsPresenterImpl(this);
 		mType = getArguments().getInt("type");
+
 	}
 
 	@Nullable
@@ -106,7 +109,21 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
 
 	@Override
 	public void addNews(List<NewsBean> newsList) {
-
+		adapter.isShowFooter(true);
+		if(data == null){
+			data = new ArrayList<>();
+		}
+		data.addAll(newsList);
+		if(pageIndex == 0){
+			adapter.setData(data);
+		}else {
+			//如果没有更多数据,则隐藏 footer 布局
+			if(newsList == null || newsList.size() == 0){
+				adapter.isShowFooter(false);
+			}
+			adapter.notifyDataSetChanged();
+		}
+		pageIndex += Urls.PAZE_SIZE;
 	}
 
 	@Override
@@ -121,6 +138,10 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
 
 	@Override
 	public void onRefresh() {
-
+		pageIndex = 0;
+		if(data != null){
+			data.clear();
+		}
+		mNewsPresenter.loadNews(mType, pageIndex);
 	}
 }
